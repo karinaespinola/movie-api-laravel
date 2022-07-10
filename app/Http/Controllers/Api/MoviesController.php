@@ -14,7 +14,6 @@ class MoviesController extends Controller
       $genre    = $request->genre;
       $cast     = $request->cast;
       $keywords = $request->keywords;
-      
       // Check if the media paratemer is present in the request
       if (! $request->filled('media')) {
         return response()->json([
