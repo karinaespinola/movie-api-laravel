@@ -8,15 +8,13 @@ use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
 {
-  private $requestUrl = 'https://api.themoviedb.org/3/discover/movie';  
-  
-  public function getSuggestions(Request $request) {
+   public function getSuggestions(Request $request) {
       $genre    = $request->genre;
       $cast     = $request->cast;
       $keywords = $request->keywords;
       
       // Make request to the TMDB
-      $response = Http::get($this->requestUrl, [
+      $response = Http::get(env('DISCOVER_BASE_URL', null) . 'movie', [
         'api_key'       => env('TMDB_API_KEY', null), 
         'with_genres'   => $genre,
         'with_people'   => $cast,
