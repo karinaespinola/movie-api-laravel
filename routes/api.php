@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/movies',[MoviesController::class, 'getSuggestions']);
-Route::get('/shows',[TvController::class, 'getSuggestions']);
+Route::get('/tv',[TvController::class, 'getSuggestions']);
 Route::get('/movies/trending',[MoviesController::class, 'getTrendingMovies']);
-Route::get('/shows/trending',[TvController::class, 'getTrendingShows']);
+Route::get('/tv/trending',[TvController::class, 'getTrendingShows']);
