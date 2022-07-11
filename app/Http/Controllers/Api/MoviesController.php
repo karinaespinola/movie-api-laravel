@@ -14,7 +14,7 @@ class MoviesController extends Controller
       $keywords = $request->keywords;
       
       // Make request to the TMDB
-      $response = Http::get(env('DISCOVER_BASE_URL', null) . 'movie', [
+      $response = Http::get(env('API_BASE_URL', null) . 'discover/movie', [
         'api_key'       => env('TMDB_API_KEY', null), 
         'with_genres'   => $genre,
         'with_people'   => $cast,
@@ -27,4 +27,15 @@ class MoviesController extends Controller
         'data' => $response->json()
       ], 200);
     }
-}
+
+    public function getTrendingMovies() {
+      // Make request to the TMDB
+      $response = Http::get(env('API_BASE_URL', null) . 'trending/movie/week', [
+        'api_key' => env('TMDB_API_KEY', null), 
+      ]);
+  
+      return response()->json([
+        'data' => $response->json()
+      ], 200);
+    }
+  }
